@@ -13,7 +13,7 @@ model = pickle.load(open('model.pkl', 'rb'))
 scaler =pickle.load(open('scaler.pkl', 'rb'))
 @app.route('/')
 def index():
-    return flask.render_template('template.html')
+    return render_template('template.html')
 
 @app.route('/predict',methods=['POST'])
 def predict():
@@ -28,7 +28,7 @@ def predict():
 
     output = round(prediction[0], 3)
 
-    return flask.render_template('template.html', prediction_text='Estimated value of property is $ {}'.format(output))
+    return render_template('template.html', prediction_text='Estimated value of property is $ {}'.format(output))
 
 
 if __name__ == "__main__":
