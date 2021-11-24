@@ -12,10 +12,10 @@ app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 scaler =pickle.load(open('scaler.pkl', 'rb'))
 @app.route('/')
-def index():
+def home():
     return render_template('template.html')
 
-@app.route('/predict',methods=['GET','POST'])
+@app.route('/predict',methods=['POST'])
 def predict():
     if request.method=='POST':
         '''
