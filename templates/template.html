@@ -11,7 +11,7 @@
 	<h1>Predict Housing Prices</h1>
 
      <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
+    <form action="{{ url_for('predict')}}"method="POST">
     	<input type="text" name="MSSubClass" placeholder="MSSubClass" required="required" />
         <input type="text" name="Neighborhood" placeholder="Neighborhood" required="required" />
 		<input type="text" name="GarageCars" placeholder="GarageCars" required="required" />
