@@ -17,15 +17,16 @@ def home():
 
 @app.route('/predict',methods=['POST'])
 def predict():
-    '''
+    if request.method=='POST':
+        '''
     For rendering results on HTML GUI
     '''
-    int_features = [float(x) for x in request.form.values()]
-    final_features = [np.array(int_features)]
-    final_features=scaler.transform(final_features)
-    prediction = model.predict(final_features)
+        int_features = [float(x) for x in request.form.values()]
+        final_features = [np.array(int_features)]
+        final_features=scaler.transform(final_features)
+        prediction = model.predict(final_features)
 
-    output = round(prediction[0], 3)
+        output = round(prediction[0], 3)
 
     return render_template('template.html', prediction_text='Estimated value of property is $ {}'.format(output))
 
