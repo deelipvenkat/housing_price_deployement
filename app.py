@@ -15,7 +15,7 @@ scaler =pickle.load(open('scaler.pkl', 'rb'))
 def home():
     return render_template('template.html')
 
-@app.route('/predict',methods=['POST'])
+@app.route('/predict',methods=["GET",'POST'])
 def predict():
     if request.method=='POST':
         '''
@@ -24,9 +24,9 @@ def predict():
         int_features = [float(x) for x in request.form.values()]
         final_features = [np.array(int_features)]
         final_features=scaler.transform(final_features)
-        prediction = model.predict(final_features)
+    prediction = model.predict(final_features)
 
-        output = round(prediction[0], 3)
+    output = round(prediction[0], 3)
 
     return render_template('template.html', prediction_text='Estimated value of property is $ {}'.format(output))
 
